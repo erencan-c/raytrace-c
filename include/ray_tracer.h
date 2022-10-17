@@ -63,8 +63,9 @@ constfn static __always_inline vec4f cast_ray(const Ray self, cfloat t) {
 
 constfn vec4f plane_pixel_position(const ScreenPlane self, const size_t x, const size_t y);
 
-#include <collision_object.h>
+typedef struct collision_object CollisionObject;
+// #include <collision_object.h>
 
-pure Color trace_ray(const Ray self, size_t objects_len, CollisionObject const objects[objects_len], const size_t depth);
+pure Color trace_ray(const Ray self, size_t objects_len, CollisionObject* const objects, const size_t depth);
 
 #endif

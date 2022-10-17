@@ -1,3 +1,4 @@
+#include <collision_object.h>
 #include <ray_tracer.h>
 
 pixel_position_function pixel_positon = plane_pixel_position;
@@ -11,7 +12,7 @@ constfn vec4f plane_pixel_position(const ScreenPlane self, const size_t x, const
 pure Color trace_ray(
    const Ray self,
    size_t objects_len,
-   CollisionObject const objects[objects_len],
+   CollisionObject* const objects,
    const size_t depth
 ) {
    vec4f collision_point = {0.0f};

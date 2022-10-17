@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <ppm.h>
 #include <vec.h>
 #include <ray_tracer.h>

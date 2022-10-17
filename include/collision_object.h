@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include <ray_tracer.h>
 #include <vec.h>
+
+// typedef struct sphere Sphere;
 #include <sphere.h>
 
 typedef struct collision_object {
@@ -21,7 +23,7 @@ pure static __always_inline bool get_collision(const CollisionObject self, const
          return sphere_get_collision(self.data.sphere, ray, out);
       break;
    }
-   return false;
+   // return false;
 }
 
 pure static __always_inline vec4f get_normal(const CollisionObject self, vec4fc point) {
@@ -30,7 +32,7 @@ pure static __always_inline vec4f get_normal(const CollisionObject self, vec4fc 
          return sphere_get_normal(self.data.sphere, point);
       break;
    }
-   return (vec4fc){0.0f,0.0f,0.0f,0.0f};
+   // return (vec4fc){0.0f,0.0f,0.0f,0.0f};
 }
 
 pure static __always_inline vec4f get_reflection(const CollisionObject self, vec4fc normal) {
@@ -39,7 +41,7 @@ pure static __always_inline vec4f get_reflection(const CollisionObject self, vec
          return sphere_get_reflection(self.data.sphere, normal);
       break;
    }
-   return (vec4fc){0.0f,0.0f,0.0f,0.0f};
+   // return (vec4fc){0.0f,0.0f,0.0f,0.0f};
 }
 
 pure static __always_inline vec4f get_diffraction(const CollisionObject self, vec4fc normal) {
@@ -48,7 +50,7 @@ pure static __always_inline vec4f get_diffraction(const CollisionObject self, ve
          return sphere_get_diffraction(self.data.sphere, normal);
       break;
    }
-   return (vec4fc){0.0f,0.0f,0.0f,0.0f};
+   // return (vec4fc){0.0f,0.0f,0.0f,0.0f};
 }
 
 #endif
