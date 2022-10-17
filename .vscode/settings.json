@@ -1,0 +1,7 @@
+{
+   "files.associations": {
+      "ratio": "c",
+      "collision_object.h": "c",
+      "time.h": "c"
+   }
+}
