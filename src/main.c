@@ -11,12 +11,15 @@
    #define NOT_UNUSED(x) ((void)(x))
 #endif
 
+#define WIDTH 800
+#define HEIGHT 800
+
 int main() {
    struct timeval start, stop;
    gettimeofday(&start, NULL);
 
    ScreenPlane scr = {
-      .resolution = (Point2){.width = 1080, .height = 1080},
+      .resolution = (Point2){.width = WIDTH, .height = HEIGHT},
       .top_left_corner = {-0.5f, 0.5f, 0.0f, 0.0f},
       .down = {0.0f, -1.0f, 0.0f, 0.0f},
       .right = {1.0f, 0.0f, 0.0f, 0.0f},
@@ -24,7 +27,7 @@ int main() {
    Camera cam = {
       .focal_position = {0.0f, 0.0f, -1.0f, 0.0f},
    };
-   PPM* ppm = PPM_new(600, 600);
+   PPM* ppm = PPM_new(WIDTH, HEIGHT);
 
    CollisionObject* objects = calloc(1, sizeof(*objects));
    Sphere my_sphere = new_sphere((vec4fc){1.0f, 1.0f, 3.0f, 0.0f}, 1.0f);
