@@ -9,6 +9,9 @@ constfn vec4f plane_pixel_position(const ScreenPlane self, const size_t x, const
    return add4f(self.top_left_corner, add4f(mul4fs(self.right, x_ratio), mul4fs(self.down, y_ratio)));
 }
 
+vec4fc vec127 = {127.0f, 127.0f, 127.0f, 127.0f};
+vec4fc vec128 = {128.0f, 128.0f, 128.0f, 128.0f};
+
 pure Color trace_ray(
    const Ray self,
    size_t objects_len,
@@ -27,17 +30,18 @@ pure Color trace_ray(
       if(get_collision(object, self, &collision_point)) {
          normal = get_normal(object, collision_point);
          // return (Color){.r = 0xFF, .g = 0xFF, .b = 0xFF};
-         array4fc arr_normal = vec4f_to_array4f(mul4fs(normal, 127.0f));
+         array4fc arr_normal = vec4f_to_array4f(add4f(mul4f(normal, vec127), vec128));
+         // return (Color){.as_integer = 0xFF000000};
          return (Color){
-            .r = arr_normal.data[0] + 128.0f,
-            .g = arr_normal.data[1] + 128.0f,
-            .b = arr_normal.data[2] + 128.0f,
+            .r = arr_normal.data[0],
+            .g = arr_normal.data[1],
+            .b = arr_normal.data[2],
             .a = 0xFF
          };
          // reflection_ray = get_reflection(object, normal);
          // diffraction_ray = get_diffraction(object, normal);
       } else {
-         return (Color){.as_integer = 0xFF000000};
+         // return (Color){.as_integer = 0xFF000000};
       }
    }
    // if(depth == 0) {

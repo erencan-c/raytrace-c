@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <sphere.h>
 
-pure bool sphere_get_collision(Sphere* const self, Ray ray, vec4f* const out) {
+pure bool sphere_get_collision(const Sphere* const self, Ray ray, vec4f* const out) {
    vec4fc C = self->position;
    cfloat r = self->radius;
    vec4fc o = ray.start;
@@ -20,22 +20,22 @@ pure bool sphere_get_collision(Sphere* const self, Ray ray, vec4f* const out) {
    return true;
 }
 
-pure vec4f sphere_get_normal(Sphere* const self, vec4fc point) {
+pure vec4f sphere_get_normal(const Sphere* const self, vec4fc point) {
    return normalize4f(sub4f(point, self->position));
 }
 
-pure vec4f sphere_get_reflection(Sphere* const self, vec4fc point) {
+pure vec4f sphere_get_reflection(const Sphere* const self, vec4fc point) {
    NOT_UNUSED(self);
    NOT_UNUSED(point);
    return (vec4f){0.0f};
 }
 
-pure vec4f sphere_get_diffraction(Sphere* const self, vec4fc point) {
+pure vec4f sphere_get_diffraction(const Sphere* const self, vec4fc point) {
    NOT_UNUSED(self);
    NOT_UNUSED(point);
    return (vec4f){0.0f};
 }
 
-pure Sphere new_sphere(vec4fc position, float radius) {
+pure Sphere new_sphere(vec4fc position, cfloat radius) {
    return (Sphere){.position = position, .radius = radius};
 }

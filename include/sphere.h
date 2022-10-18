@@ -19,10 +19,10 @@ typedef struct sphere Sphere;
 #endif
 
 #include <ray_tracer.h>
-pure bool sphere_get_collision(Sphere* const self, Ray ray, vec4f* const out);
-pure vec4f sphere_get_normal(Sphere* const self, vec4fc point);
-pure vec4f sphere_get_reflection(Sphere* const self, vec4fc point);
-pure vec4f sphere_get_diffraction(Sphere* const self, vec4fc point);
-pure Sphere new_sphere(vec4fc position, float radius);
+pure bool sphere_get_collision(const Sphere* const self, Ray ray, vec4f* const out);
+pure vec4f sphere_get_normal(const Sphere* const self, vec4fc point);
+pure vec4f sphere_get_reflection(const Sphere* const self, vec4fc point);
+pure vec4f sphere_get_diffraction(const Sphere* const self, vec4fc point);
+pure Sphere new_sphere(vec4fc position, cfloat radius);
 
 #endif

@@ -13,11 +13,11 @@ typedef struct collision_object {
       COLLISION_OBJECT_SPHERE,
    } type;
    union collision_object_data {
-      Sphere* sphere;
+      const Sphere* sphere;
    } data;
 } CollisionObject;
 
-pure static __always_inline bool get_collision(const CollisionObject self, const Ray ray, vec4f* out) {
+pure static inline bool get_collision(const CollisionObject self, const Ray ray, vec4f* out) {
    switch(self.type) {
       case COLLISION_OBJECT_SPHERE:
          return sphere_get_collision(self.data.sphere, ray, out);
@@ -26,7 +26,7 @@ pure static __always_inline bool get_collision(const CollisionObject self, const
    // return false;
 }
 
-pure static __always_inline vec4f get_normal(const CollisionObject self, vec4fc point) {
+pure static inline vec4f get_normal(const CollisionObject self, vec4fc point) {
    switch(self.type) {
       case COLLISION_OBJECT_SPHERE:
          return sphere_get_normal(self.data.sphere, point);
@@ -35,7 +35,7 @@ pure static __always_inline vec4f get_normal(const CollisionObject self, vec4fc 
    // return (vec4fc){0.0f,0.0f,0.0f,0.0f};
 }
 
-pure static __always_inline vec4f get_reflection(const CollisionObject self, vec4fc normal) {
+pure static inline vec4f get_reflection(const CollisionObject self, vec4fc normal) {
    switch(self.type) {
       case COLLISION_OBJECT_SPHERE:
          return sphere_get_reflection(self.data.sphere, normal);
@@ -44,7 +44,7 @@ pure static __always_inline vec4f get_reflection(const CollisionObject self, vec
    // return (vec4fc){0.0f,0.0f,0.0f,0.0f};
 }
 
-pure static __always_inline vec4f get_diffraction(const CollisionObject self, vec4fc normal) {
+pure static inline vec4f get_diffraction(const CollisionObject self, vec4fc normal) {
    switch(self.type) {
       case COLLISION_OBJECT_SPHERE:
          return sphere_get_diffraction(self.data.sphere, normal);
