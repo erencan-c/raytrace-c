@@ -12,8 +12,8 @@ BINDIR=bin
 SRCS = $(wildcard $(SRCDIR)/*.$(SRC_EXTENSION))
 OBJS = $(patsubst $(SRCDIR)/%.$(SRC_EXTENSION), $(OBJDIR)/%.$(OBJ_EXTENSION), $(SRCS))
 
-CFLAGS=-I"./$(INCDIR)" -Wall -Wextra -O3
-LDFLAGS=-fPIC -lm -O3
+CFLAGS=-I"./$(INCDIR)" -Wall -Wextra -O3 -fopenmp
+LDFLAGS=-fPIC -lm -O3 -fopenmp
 
 EXECNAME=main
 ARGS=

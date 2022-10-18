@@ -34,6 +34,7 @@ int main() {
    Sphere my_sphere = new_sphere((vec4fc){1.0f, 1.0f, 3.0f, 0.0f}, 1.0f);
    objects[0] = (CollisionObject){.type = COLLISION_OBJECT_SPHERE, .data.sphere = &my_sphere};
    
+   #pragma omp parallel for
    for(size_t i = 0; i < ppm->row; i++) {
       for(size_t j = 0; j < ppm->col; j++) {
          vec4fc pixel_pos = pixel_positon(scr, i, j);
